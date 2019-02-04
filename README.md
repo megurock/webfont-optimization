@@ -31,7 +31,7 @@ Python のモジュールをインストールします。
 pip install fonttools brotli
 ```
 
-## サブセット化
+## 1. フォントのサブセット化
 
 `fonts` ディレクトリ配下に、120 分割されたフォントデータ (.woff2) と、`font-face` の定義ファイルが生成されます。
 
@@ -39,10 +39,21 @@ pip install fonttools brotli
 yarn subset
 ```
 
-## CSS のマージ
+## 2. CSS のマージ
 
 上記コマンドによって生成されたすべての CSS ファイルを、`css/fonts.css` にマージします。（マージされた CSS ファイルは削除されます。）
 
 ```bash
 yarn merge
 ```
+
+## 確認
+
+「1. フォントのサブセット化」、「2. CSS のマージ」が完了したら、以下のコマンドを実行し、<a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a> を Chrome で開き、フォントセットを変更したり、テキストを入力してみてください。  
+
+開発者ツールの Network タブでは、フォントデータが動的に読み込まれていることが確認できます。
+
+```bash
+yarn serve
+```
+
