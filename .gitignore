@@ -1,3 +1,10 @@
+# subset font and css will be output into this directory
+fonts
+
+# font
+*.otf
+*.ttf
+
 .DS_Store
 Thumbs.db
 node_modules/

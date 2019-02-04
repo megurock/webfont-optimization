@@ -1,0 +1,16 @@
+{
+  "name": "webfont-optimization",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "megurock",
+  "license": "MIT",
+  "devDependencies": {
+    "concat": "^1.0.3",
+    "del": "^3.0.0",
+    "font-ranger": "^3.0.5"
+  },
+  "scripts": {
+    "subset": "node subset",
+    "merge": "node merge"
+  }
+}
