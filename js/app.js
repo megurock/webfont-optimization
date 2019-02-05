@@ -6,7 +6,7 @@ const App = {
     <div class="app">
       <div class="app-ui">
         <select class="font-set-selector" @change="onFontSelectorChange" ref="fontSelector">
-          <option v-for="(range, index) in ranges" :key="index">Font Set {{ranges.length - index - 1}}</option>
+          <option v-for="(range, index) in ranges" :value="ranges.length - index - 1" :key="index">Font Set {{ranges.length - index - 1}}</option>
         </select>
         <label class="app-ui__check">
           <input type="checkbox" v-model="showInput">
@@ -20,12 +20,12 @@ const App = {
   data() {
     return {
       showInput: false,
-      ranges: ranges.reverse(),
+      ranges,
     }
   },
   computed: {
     selectedRangeIndex() {
-      return this.$route.params.index || 0
+      return this.$route.params.index || this.ranges.length - 1
     },
     range() {
       return this.ranges[this.selectedRangeIndex]
@@ -53,12 +53,13 @@ const App = {
   },
   methods: {
     onFontSelectorChange(event) {
-      const index = event.currentTarget.selectedIndex
+      const index = event.currentTarget.value
       this.$router.push({ path: `/${index}`, params: { index } })
     },
   },
   mounted() {
-    this.$refs.fontSelector.selectedIndex = this.selectedRangeIndex
+    console.log('idx', this.selectedRangeIndex)
+    this.$refs.fontSelector.value = this.selectedRangeIndex
   }
 }
 
