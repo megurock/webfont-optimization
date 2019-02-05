@@ -1,9 +1,11 @@
-new Vue({
-  el: '#app',
+/**
+ * App
+ */
+const App = {
   template: `
     <div class="app">
       <div class="app-ui">
-        <select class="font-set-selector" @change="onFontSelectorChange">
+        <select class="font-set-selector" @change="onFontSelectorChange" ref="fontSelector">
           <option v-for="(range, index) in ranges" :key="index">Font Set {{ranges.length - index - 1}}</option>
         </select>
         <label class="app-ui__check">
@@ -15,16 +17,20 @@ new Vue({
       <textarea class="input app__input" v-if="showInput"></textarea>
     </div>
   `,
-  data: {
-    showInput: false,
-    selectedRangeIndex: 0,
-    ranges: ranges.reverse(),
+  data() {
+    return {
+      showInput: false,
+      ranges: ranges.reverse(),
+    }
   },
   computed: {
-    range: function() {
+    selectedRangeIndex() {
+      return this.$route.params.index || 0
+    },
+    range() {
       return this.ranges[this.selectedRangeIndex]
     },
-    output: function() {
+    output() {
       return this.range.map((unicodeRange) => {
         const charCode = unicodeRange.replace(/^U\+(.+)/, '$1')
         const fromTo = charCode.split('-')
@@ -46,8 +52,25 @@ new Vue({
     }
   },
   methods: {
-    onFontSelectorChange: function(event) {
-      this.selectedRangeIndex = event.currentTarget.selectedIndex
-    }
+    onFontSelectorChange(event) {
+      const index = event.currentTarget.selectedIndex
+      this.$router.push({ path: `/${index}`, params: { index } })
+    },
+  },
+  mounted() {
+    this.$refs.fontSelector.selectedIndex = this.selectedRangeIndex
   }
+}
+
+/**
+ * Router 
+ */
+const router = new VueRouter({
+  routes: [
+    { path: '/', component: App },
+    { path: '/:index', component: App }
+  ]
 })
+
+// startup
+new Vue({ router }).$mount('#app')
