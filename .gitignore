@@ -1,4 +1,5 @@
 # subset font and css will be output into this directory
+fonts
 
 # font
 *.otf
