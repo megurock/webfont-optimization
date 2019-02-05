@@ -2,6 +2,9 @@
 
 <a href="https://fonts.google.com/" target="_blank">GoogleFonts</a> と同じやり方で、日本語フォントを 120 ファイルに分割して利用するサンプルです。
 
+URL: <a href="https://jp-webfont-subset-example.herokuapp.com#" target="_blank">https://jp-webfont-subset-example.herokuapp.com#</a>
+
+
 ## しろくまフォントのダウンロード
 
 サンプルフォントとして、<a href="https://www.lazypolarbear.com/entry/font-shirokuma" target="_blank">こちらのサイト</a> で公開している「しろくまフォント」を利用させていただいております。
