@@ -58,7 +58,6 @@ const App = {
     },
   },
   mounted() {
-    console.log('idx', this.selectedRangeIndex)
     this.$refs.fontSelector.value = this.selectedRangeIndex
   }
 }
