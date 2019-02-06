@@ -44,9 +44,9 @@ const App = {
             charCodes.push(fromBase10)
             fromBase10++
           }
-          return String.fromCharCode(...charCodes)
+          return String.fromCodePoint(...charCodes)
         } else {
-          return String.fromCharCode(parseInt(from, 16))
+          return String.fromCodePoint(parseInt(from, 16))
         }
       }).join('')
     }
