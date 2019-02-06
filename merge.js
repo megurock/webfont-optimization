@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const contact = require('concat')
+const concat = require('concat')
 const del = require('del');
 
 /**
@@ -25,7 +25,7 @@ function getCSSFilePath(dir, fileList = []) {
  */
 const cssFiles = getCSSFilePath('./fonts')
 if (cssFiles.length) {
-  contact(cssFiles, './css/fonts.css')
+  concat(cssFiles, './css/fonts.css')
 }
 
 /**
