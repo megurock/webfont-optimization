@@ -17,6 +17,15 @@
     /.*\.woff2?$/,
     workbox.strategies.cacheFirst({
       cacheName: 'web-fonts',
+      plugins: [
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 200],
+        }),
+        new workbox.expiration.Plugin({
+          maxAgeSeconds: 60 * 60 * 24 * 365,
+          maxEntries: 30,
+        }),
+      ],
     })
   )
 
